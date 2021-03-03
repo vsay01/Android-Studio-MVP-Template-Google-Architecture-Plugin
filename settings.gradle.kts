@@ -1,1 +1,1 @@
-rootProject.name = "IntelliJ Platform Plugin Template"
+rootProject.name = "Android-Studio-MVP-Template-Google-Architecture-Plugin"

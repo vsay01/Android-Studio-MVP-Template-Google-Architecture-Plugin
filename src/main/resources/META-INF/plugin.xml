@@ -1,19 +1,29 @@
 <idea-plugin>
-    <id>org.jetbrains.plugins.template</id>
-    <name>Template</name>
-    <vendor>JetBrains</vendor>
+    <id>com.github.vsay01.mvpsetup</id>
+    <name>MVP Setup</name>
+    <vendor>vsay01</vendor>
 
     <!-- Product and plugin compatibility requirements -->
     <!-- https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+    <depends>org.jetbrains.android</depends>
+    <depends>org.jetbrains.kotlin</depends>
+    <depends>com.intellij.modules.java</depends>
     <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.androidstudio</depends>
+
+    <idea-version since-build="201"/>
 
     <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="org.jetbrains.plugins.template.services.MyApplicationService"/>
-        <projectService serviceImplementation="org.jetbrains.plugins.template.services.MyProjectService"/>
+        <applicationService serviceImplementation="com.github.vsay01.mvpsetup.services.MyApplicationService"/>
+        <projectService serviceImplementation="com.github.vsay01.mvpsetup.services.MyProjectService"/>
+    </extensions>
+
+    <extensions defaultExtensionNs="com.android.tools.idea.wizard.template">
+        <wizardTemplateProvider implementation="com.github.vsay01.mvpsetup.mvp.WizardTemplateProviderImpl" />
     </extensions>
 
     <applicationListeners>
-        <listener class="org.jetbrains.plugins.template.listeners.MyProjectManagerListener"
+        <listener class="com.github.vsay01.mvpsetup.listeners.MyProjectManagerListener"
                   topic="com.intellij.openapi.project.ProjectManagerListener"/>
     </applicationListeners>
 </idea-plugin>

@@ -17,14 +17,14 @@ val mviSetupTemplate
 		val packageNameParam = defaultPackageNameParameter
 		val className = stringParameter {
 			name = "Class Name"
-			default = "titi"
+			default = "Titi"
 			help = "The name of the class to create and use in Activity"
 			constraints = listOf(Constraint.NONEMPTY)
 		}
 
 		val activityLayoutName = stringParameter {
 			name = "Activity Layout Name"
-			default = "titi"
+			default = "Titi"
 			help = "The name of the layout to create for the activity"
 			constraints = listOf(Constraint.LAYOUT, Constraint.UNIQUE, Constraint.NONEMPTY)
 			suggest = { activityToLayout(className.value.toLowerCase()) }
@@ -32,7 +32,7 @@ val mviSetupTemplate
 
 		val fragmentLayoutName = stringParameter {
 			name = "Fragment Layout Name"
-			default = "toto"
+			default = "Toto"
 			help = "The name of the layout to create for the fragment"
 			constraints = listOf(Constraint.LAYOUT, Constraint.UNIQUE, Constraint.NONEMPTY)
 			suggest = { fragmentToLayout(className.value.toLowerCase()) }
@@ -46,7 +46,7 @@ val mviSetupTemplate
 		)
 
 		recipe = { data: TemplateData ->
-			mviSetup(
+			mvpSetup(
 					data as ModuleTemplateData,
 					packageNameParam.value,
 					className.value,

@@ -1,6 +1,17 @@
 package com.github.vsay01.mvpsetup.mvp
 
-import com.android.tools.idea.wizard.template.*
+import com.android.tools.idea.wizard.template.Category
+import com.android.tools.idea.wizard.template.Constraint
+import com.android.tools.idea.wizard.template.FormFactor
+import com.android.tools.idea.wizard.template.ModuleTemplateData
+import com.android.tools.idea.wizard.template.PackageNameWidget
+import com.android.tools.idea.wizard.template.TemplateData
+import com.android.tools.idea.wizard.template.TextFieldWidget
+import com.android.tools.idea.wizard.template.WizardUiContext
+import com.android.tools.idea.wizard.template.activityToLayout
+import com.android.tools.idea.wizard.template.fragmentToLayout
+import com.android.tools.idea.wizard.template.stringParameter
+import com.android.tools.idea.wizard.template.template
 
 val mviSetupTemplate
 	get() = template {
@@ -11,8 +22,10 @@ val mviSetupTemplate
 		minBuildApi = 16
 		category = Category.Other // Check other categories
 		formFactor = FormFactor.Mobile
-		screens = listOf(WizardUiContext.FragmentGallery, WizardUiContext.MenuEntry,
-				WizardUiContext.NewProject, WizardUiContext.NewModule)
+		screens = listOf(
+			WizardUiContext.FragmentGallery, WizardUiContext.MenuEntry,
+			WizardUiContext.NewProject, WizardUiContext.NewModule
+		)
 
 		val packageNameParam = defaultPackageNameParameter
 		val className = stringParameter {
@@ -39,19 +52,19 @@ val mviSetupTemplate
 		}
 
 		widgets(
-				TextFieldWidget(className),
-				TextFieldWidget(activityLayoutName),
-				TextFieldWidget(fragmentLayoutName),
-				PackageNameWidget(packageNameParam)
+			TextFieldWidget(className),
+			TextFieldWidget(activityLayoutName),
+			TextFieldWidget(fragmentLayoutName),
+			PackageNameWidget(packageNameParam)
 		)
 
 		recipe = { data: TemplateData ->
 			mvpSetup(
-					data as ModuleTemplateData,
-					packageNameParam.value,
-					className.value,
-					activityLayoutName.value,
-					fragmentLayoutName.value
+				data as ModuleTemplateData,
+				packageNameParam.value,
+				className.value,
+				activityLayoutName.value,
+				fragmentLayoutName.value
 			)
 		}
 	}

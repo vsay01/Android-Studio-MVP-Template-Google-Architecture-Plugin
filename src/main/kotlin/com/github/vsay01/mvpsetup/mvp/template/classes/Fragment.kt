@@ -3,10 +3,10 @@ package com.github.vsay01.mvpsetup.mvp.template.classes
 import com.android.tools.idea.wizard.template.ProjectTemplateData
 
 fun createFragment(
-		packageName: String,
-		className: String,
-		fragmentLayoutName: String,
-		projectData: ProjectTemplateData
+    packageName: String,
+    className: String,
+    fragmentLayoutName: String,
+    projectData: ProjectTemplateData
 ) = """
     package $packageName
 

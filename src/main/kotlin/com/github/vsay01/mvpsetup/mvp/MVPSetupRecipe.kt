@@ -18,11 +18,11 @@ import com.intellij.psi.PsiManager
 import org.jetbrains.kotlin.idea.KotlinLanguage
 
 fun RecipeExecutor.mvpSetup(
-        moduleData: ModuleTemplateData,
-        packageName: String,
-        className: String,
-        activityLayoutName: String,
-        fragmentLayoutName: String
+    moduleData: ModuleTemplateData,
+    packageName: String,
+    className: String,
+    activityLayoutName: String,
+    fragmentLayoutName: String
 ) {
     val (projectData) = moduleData
     val project = projectInstance ?: return
@@ -42,34 +42,36 @@ fun RecipeExecutor.mvpSetup(
     val activityTitle = "$className Activity".capitalize()
 
     // This will generate new manifest (with activity) to merge it with existing
-    generateManifest(moduleData, activityClass, activityTitle, packageName,
-            isLauncher = false, hasNoActionBar = true, generateActivityTitle = true)
+    generateManifest(
+        moduleData, activityClass, activityTitle, packageName,
+        isLauncher = false, hasNoActionBar = true, generateActivityTitle = true
+    )
 
     createActivity(packageName, className, activityLayoutName, projectData)
-            .save(directorySrc, packageName, "${activityClass}.kt")
+        .save(directorySrc, packageName, "$activityClass.kt")
 
     createContract(packageName, className)
-            .save(directorySrc, packageName, "${contractClass}.kt")
+        .save(directorySrc, packageName, "$contractClass.kt")
 
     createFragment(packageName, className, fragmentLayoutName, projectData)
-            .save(directorySrc, packageName, "${fragmentClass}.kt")
+        .save(directorySrc, packageName, "$fragmentClass.kt")
 
     createPresenter(packageName, className)
-            .save(directorySrc, packageName, "${presenterClass}.kt")
+        .save(directorySrc, packageName, "$presenterClass.kt")
 
     createActivityLayout(packageName, className)
-            .save(directoryRes, "layout", "${activityLayoutName}_layout.xml")
+        .save(directoryRes, "layout", "${activityLayoutName}_layout.xml")
 
     createFragmentLayout()
-            .save(directoryRes, "layout", "${fragmentLayoutName}_layout.xml")
+        .save(directoryRes, "layout", "${fragmentLayoutName}_layout.xml")
 }
 
 fun String.save(srcDir: PsiDirectory, subDirPath: String, fileName: String) {
     try {
         val destDir = subDirPath.split(".").toDir(srcDir)
         val psiFile = PsiFileFactory
-                .getInstance(srcDir.project)
-                .createFileFromText(fileName, KotlinLanguage.INSTANCE, this)
+            .getInstance(srcDir.project)
+            .createFileFromText(fileName, KotlinLanguage.INSTANCE, this)
         destDir.add(psiFile)
     } catch (exc: Exception) {
         exc.printStackTrace()

@@ -64,11 +64,13 @@ changelog {
 detekt {
 	config = files("./detekt-config.yml")
 	buildUponDefaultConfig = true
+	ignoreFailures = true // If set to `true` the build does not fail when the maxIssues count was reached. Defaults to `false`.
 
 	reports {
-		html.enabled = false
-		xml.enabled = false
-		txt.enabled = false
+		html.enabled = true // observe findings in your browser with structure and code snippets
+		xml.enabled = true // checkstyle like format mainly for integrations like Jenkins
+		txt.enabled = true // similar to the console output, contains issue signature to manually edit baseline files
+		sarif.enabled = true // standardized SARIF format (https://sarifweb.azurewebsites.net/) to support integrations with Github Code Scanning
 	}
 }
 
@@ -93,24 +95,24 @@ tasks {
 
 		// Extract the <!-- Plugin description --> section from README.md and provide for the plugin's manifest
 		pluginDescription(
-				closure {
-					File("./README.md").readText().lines().run {
-						val start = "<!-- Plugin description -->"
-						val end = "<!-- Plugin description end -->"
+            closure {
+                File("./README.md").readText().lines().run {
+                    val start = "<!-- Plugin description -->"
+                    val end = "<!-- Plugin description end -->"
 
-						if (!containsAll(listOf(start, end))) {
-							throw GradleException("Plugin description section not found in README.md:\n$start ... $end")
-						}
-						subList(indexOf(start) + 1, indexOf(end))
-					}.joinToString("\n").run { markdownToHTML(this) }
-				}
+                    if (!containsAll(listOf(start, end))) {
+                        throw GradleException("Plugin description section not found in README.md:\n$start ... $end")
+                    }
+                    subList(indexOf(start) + 1, indexOf(end))
+                }.joinToString("\n").run { markdownToHTML(this) }
+            }
 		)
 
 		// Get the latest available change notes from the changelog file
 		changeNotes(
-				closure {
-					changelog.getLatest().toHTML()
-				}
+            closure {
+                changelog.getLatest().toHTML()
+            }
 		)
 	}
 

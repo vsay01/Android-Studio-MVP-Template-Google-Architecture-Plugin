@@ -1,8 +1,8 @@
 package com.github.vsay01.mvpsetup.mvp.template.classes
 
 fun createContract(
-		packageName: String,
-		className: String
+    packageName: String,
+    className: String
 ) = """
     package $packageName
 

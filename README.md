@@ -1,6 +1,6 @@
 # MVP Setup Plugin
 
-[![Build](https://github.com/vsay01/Android-Studio-MVP-Template-Google-Architecture-Plugin/workflows/Build/badge.svg)][gh:build]
+<!--  [![Build](https://github.com/vsay01/Android-Studio-MVP-Template-Google-Architecture-Plugin/workflows/Build/badge.svg)][gh:build] -->
 
 <!-- Plugin description -->
 

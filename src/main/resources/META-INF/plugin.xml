@@ -1,6 +1,6 @@
 <idea-plugin>
     <id>com.github.vsay01.mvpsetup</id>
-    <name>MVP Setup</name>
+    <name>MVP Generator</name>
     <vendor>vsay01</vendor>
 
     <!-- Product and plugin compatibility requirements -->

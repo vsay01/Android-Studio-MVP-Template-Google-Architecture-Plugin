@@ -1,1 +1,1 @@
-rootProject.name = "MVP Setup"
+rootProject.name = "MVP Generator"

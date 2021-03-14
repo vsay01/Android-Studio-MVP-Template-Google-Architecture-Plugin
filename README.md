@@ -1,13 +1,13 @@
-# MVP Setup Plugin
+# MVP Generator Plugin
 
 <!--  [![Build](https://github.com/vsay01/Android-Studio-MVP-Template-Google-Architecture-Plugin/workflows/Build/badge.svg)][gh:build] -->
 
 <!-- Plugin description -->
 
+An Android Studio Plugin for setting Model-View-Presenter (MVP) template; the template is inspired by google samples/ android architecture. It works with Android Studio 4.1.
+
 Starting with Android Studio 4.1, Google ended its support for custom FreeMarker templates. :( 
 Now you can’t just write your FTL files and put them in a template folder of Android Studio
-
-So here is an Android Studio Plugin for setting Model-View-Presenter (MVP) template; the template is inspired by google samples/ android architecture
 
 **Important:** The main goal of this template is to speed up the development process using android mvp template. It also shows how to create a set of files using template files in Android Studio. This template was successfully tested with Android 4.1.2.
 

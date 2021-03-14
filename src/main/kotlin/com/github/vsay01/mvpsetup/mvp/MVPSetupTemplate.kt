@@ -16,8 +16,8 @@ import com.android.tools.idea.wizard.template.template
 val mviSetupTemplate
 	get() = template {
 		revision = 2
-		name = "MVP Setup"
-		description = "Generate files for MVP"
+		name = "MVP Generator"
+		description = "Generate boilerplate code files for MVP architecture"
 		minApi = 16
 		minBuildApi = 16
 		category = Category.Other // Check other categories

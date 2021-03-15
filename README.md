@@ -11,6 +11,11 @@ Now you can’t just write your FTL files and put them in a template folder of A
 
 **Important:** The main goal of this template is to speed up the development process using android mvp template. It also shows how to create a set of files using template files in Android Studio. This template was successfully tested with Android 4.1.2.
 
+**Try it out**
+If you want to try it out, you can download it from plugin market place in Android Studio.
+
+<img src="/screenshots/mvp_generator_plugin.png" width="660">
+
 > **For Pre Android Studio 4.1**: You can install this template from https://github.com/vsay01/Android-Studio-MVP-Template-Google-Architecture
 
 <!-- Plugin description end -->
@@ -148,7 +153,7 @@ open class BasePresenter {
 }
 ```
 #### 2. Generate MVP template
-<img src="/screenshots/screenshot_1.png" width="260">
+<img src="/screenshots/screenshot_1.png" width="660">
 
 #### 3. Resolve imports and style of the added activity in manifest
 Import classes as needed, and currently it will add activity automatically to manifest with style. You need to make sure the style got resolved.
